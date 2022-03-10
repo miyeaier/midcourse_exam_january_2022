@@ -4,7 +4,7 @@ import GHSearch from './components/GHSearch'
 import { Container } from 'semantic-ui-react'
 
 const App = () => {
-  return (
+return (
     <Container>
       <section name="title">
         <Header />
