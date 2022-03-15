@@ -1,36 +1,25 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Button, Input } from "semantic-ui-react";
+import { Button, Input ,Modal} from "semantic-ui-react";
 
 const GHSearch = () => {
-  const [user, setUser] = useState("");
-  const { value } = thia.input;
-  const fetchUser = async () => {
-    axios.get(`api.github.com/users/=${value}`).then(
-      (response) => {
-        useState({ users: response.data.items });
-      },
-      (error) => {
-        alert(error);
-      }
-    );
-  };
-  if (this.input.value === "") {
-    alert("enter null");
-    return;
+  const [query, setQuery] =useState("");
+  const performSearch = async()=>{
+    const response = await axios.get('https://api.github.com/search/users',{params:{q:query}})
   }
-  return (
+  return
     <>
-    <Modal
-      useState={() => setUser("")}
-      user={user}>
-    </Modal>
-      <Input type="text" name="search" placeholder="Input GH username" />
-      <Button onClick={fetchUser} data-cy="search">
+      <Modal useState={() => setUser("")} user={user}></Modal>
+      <Input
+        data-cy="search-field"
+        type="text"
+        name="search"
+        placeholder="Input GH username"
+      />
+      <Button onClick={fetchUser} data-cy="search-botton" name="search" onClick={performSearch}>
         Search
       </Button>
     </>
-  );
 };
 
 export default GHSearch;
